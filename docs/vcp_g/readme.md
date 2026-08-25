@@ -25,4 +25,4 @@ ls -al output
 
 ## ROM file Download to board and test
 
-Follo the textbook.
+FWDN folder를 `C:\`로 copy 하고 교재의 내용을 따라서 진행
