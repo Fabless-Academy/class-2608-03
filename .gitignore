@@ -1,0 +1,23 @@
+# Local editor settings
+.vscode/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+
+# qmake / Qt build outputs
+.qmake.stash
+*.o
+*.obj
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+Makefile
+TOPST_DashBoard
+
+# Generic build output directories
+build/
+dist/
+*.elf
+*.bin
+*.map
