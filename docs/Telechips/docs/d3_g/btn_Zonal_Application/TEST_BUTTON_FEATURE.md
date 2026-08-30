@@ -35,14 +35,14 @@ Python `IpcSender`가 전담하고 있어서 구조를 통일했다.)
 
 ### 2.1 QML (UI)
 
-- [qml/components/BottomActionDock.qml](btn_Zonal_Application/TOPST_DashBoard/qml/components/BottomActionDock.qml)
+- [qml/components/BottomActionDock.qml](./TOPST_DashBoard/qml/components/BottomActionDock.qml)
   - 하단 액션 목록(`model`)에 `{ icon: "🧪", label: "Test" }` 추가.
   - `property bool testActive: false` 추가 — 다른 탭 버튼(`app.activeTab`)과 별개로
     Test 버튼만의 눌림/해제 상태를 표시하기 위함.
   - 각 버튼 delegate에서 `highlighted` 값을 계산할 때, label이 `"Test"`이면
     `dock.testActive`를, 그 외에는 기존처럼 `app.activeTab === index`를 사용.
 
-- [qml/main.qml](btn_Zonal_Application/TOPST_DashBoard/qml/main.qml)
+- [qml/main.qml](./TOPST_DashBoard/qml/main.qml)
   - `property bool testActive: false` 추가 (토글 상태의 원본).
   - `BottomActionDock { testActive: root.testActive }` 로 바인딩해서 버튼 표시에 반영.
   - `onActionTriggered`에서 `label === "Test"`일 때:
@@ -53,8 +53,8 @@ Python `IpcSender`가 전담하고 있어서 구조를 통일했다.)
 
 ### 2.2 C++ (Qt 대시보드)
 
-- [tcpclient.h](btn_Zonal_Application/TOPST_DashBoard/tcpclient.h) /
-  [tcpclient.cpp](btn_Zonal_Application/TOPST_DashBoard/tcpclient.cpp)
+- [tcpclient.h](./TOPST_DashBoard/tcpclient.h) /
+  [tcpclient.cpp](./TOPST_DashBoard/tcpclient.cpp)
   - `Q_INVOKABLE void triggerTestAction(bool pressed);` 추가.
   - 구현은 기존 `selectScenario()`와 동일한 패턴: control host/port(`controlHost_`,
     `controlPort_`, 기본 `127.0.0.1:10001`)로 짧게 TCP 연결해서 JSON 한 줄을 보내고 바로 끊는다.
@@ -64,7 +64,7 @@ Python `IpcSender`가 전담하고 있어서 구조를 통일했다.)
 
 ### 2.3 Python 브리지 (Bridge_App)
 
-- [bev_lane_modules/scenario.py](btn_Zonal_Application/Bridge_App/bev_lane_modules/scenario.py)
+- [bev_lane_modules/scenario.py](./Bridge_App/bev_lane_modules/scenario.py)
   - `ScenarioControlServer.__init__`에 `ipc_sender=None` 파라미터 추가 → CAN 전송에 사용.
   - `_accept_loop()`: 클라이언트 접속 시 `print(f"[zonal-test][CTRL] client connected from {addr}")`
     → **Qt와 TCP 연결 자체가 되는지** 확인용 로그.
@@ -78,7 +78,7 @@ Python `IpcSender`가 전담하고 있어서 구조를 통일했다.)
         → **어떤 값(01/02)이 전송되는지** 확인용 로그.
       - `self.ipc_sender.send_can(CMD_TEST, bytes([data_value]))` 호출.
 
-- [bev_lane_modules/control.py](btn_Zonal_Application/Bridge_App/bev_lane_modules/control.py)
+- [bev_lane_modules/control.py](./Bridge_App/bev_lane_modules/control.py)
   - `CMD_TEST = 0x101` 상수 추가 (`CMD_WHEEL=0x103`, `CMD_MOTOR=0x102` 다음 번호).
   - `IpcSender.send_can(can_id, data)` 메서드 추가:
     - 주기 제한(`period_ms`) 없이 즉시 전송 — Test 버튼처럼 단발성 명령에 사용.
@@ -87,7 +87,7 @@ Python `IpcSender`가 전담하고 있어서 구조를 통일했다.)
     - 정상 전송되면 `print("[zonal-test][CAN] IPC_SendPacketWithIPCHeader sent id=... data=...")`
       → **실제 IPC 디바이스에 write가 일어났는지** 확인용 로그.
 
-- [zonal_app.py](btn_Zonal_Application/Bridge_App/zonal_app.py)
+- [zonal_app.py](./Bridge_App/zonal_app.py)
   - `ScenarioControlServer(...)` 생성 시 `self.ipc_sender`를 함께 전달하도록 수정
     (`can/send`·`test/trigger` 명령을 처리하려면 IPC 송신기 참조가 필요하기 때문).
 
@@ -104,7 +104,7 @@ Python `IpcSender`가 전담하고 있어서 구조를 통일했다.)
 ```
 
 - `client connected` 로그가 안 뜨면 → Qt(C++)가 control socket에 접속조차 못 하는 상태.
-  (`Connection refused` 등은 브리지 미실행/포트 불일치, [config.json](btn_Zonal_Application/TOPST_DashBoard/config.json)의
+  (`Connection refused` 등은 브리지 미실행/포트 불일치, [config.json](./TOPST_DashBoard/config.json)의
   `control_port`와 브리지 실행 옵션 `--control-port`가 일치하는지 확인)
 - `received:` 로그는 뜨는데 `test button ...` 로그가 없다면 → JSON의 `type` 값이
   `"test/trigger"`가 아니거나 오타가 있는 경우.
