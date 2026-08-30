@@ -62,3 +62,18 @@ sudo swapon /swapfile
 
 echo '/swapfile none swap defaults 0 0' | sudo tee -a /etc/fstab
 ```
+
+---
+## 연결시 logon 상태를 기본값으로 변경
+
+```bash
+sudo sed -i 's/^#  AutomaticLoginEnable = true/AutomaticLoginEnable = true/' /etc/gdm3/custom.conf
+sudo sed -i "s/^#  AutomaticLogin = .*/AutomaticLogin = $USER/" /etc/gdm3/custom.conf
+```
+
+---
+## Silicon Labs CP210x USB to UART Bridge 인식문제
+
+* D3-G board의 경우 장치 관리자에서 인식되지 않는다.
+  - 이 경우 보드 문제로 오인할 수 있다. 반드시 FW를 download해서 확인해야 한다.
+* AI-G / VCP-G에서는 인식된다.
