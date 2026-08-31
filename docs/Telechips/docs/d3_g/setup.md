@@ -1,5 +1,5 @@
 
-```bash
+<!-- ```bash
 # 자동 업데이트 기능 비활성화 (개발 환경에서만 추천)
 sudo dpkg-reconfigure -plow unattended-upgrades
 # -> 대화형 창이 뜨면 '아니오(No)'를 선택하세요.
@@ -7,7 +7,18 @@ sudo dpkg-reconfigure -plow unattended-upgrades
 
 ```bash
 sudo apt-mark hold libegl-mesa0 libgbm1 libgl1-mesa-dri libglapi-mesa libglx-mesa0 mesa-vulkan-drivers libgl1-amber-dri
-```
+``` -->
+
+## Display Setup
+
+`DashBoard` 실행시 출력을 보기 위해서 `QT_QPA_PLATFORM` 환경변수 값을 `wayland`로 만들어 주어야 한다.
+
+* 아래 명령으로 `.bashrc`에 추가하고 export
+
+  ```bash
+  echo 'export QT_QPA_PLATFORM=wayland' >> ~/.bashrc
+  source ~/.bashrc
+  ```
 
 ## Network setup
 

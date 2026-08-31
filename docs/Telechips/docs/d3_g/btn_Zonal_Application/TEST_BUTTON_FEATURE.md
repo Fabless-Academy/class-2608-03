@@ -8,9 +8,8 @@
 grep -rn "TEST-BUTTON" TOPST_Education/btn_Zonal_Application
 ```
 
-* source [zip file](https://drive.google.com/uc?export=download&id=1utoMCNF3pLiIisDsv7g06oMPfvDRMshe)
+* source [zip file](https://drive.google.com/uc?export=download&id=1T4eij0RmieLBo-k4zKoXZ1Hc1xk9iLSE)
 
-https://drive.google.com/file/d/1utoMCNF3pLiIisDsv7g06oMPfvDRMshe/view?usp=sharing
 
 ## 1. 전체 흐름 (아키텍처)
 

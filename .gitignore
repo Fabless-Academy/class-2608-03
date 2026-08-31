@@ -9,6 +9,7 @@ __pycache__/
 .qmake.stash
 *.o
 *.obj
+!docs/Telechips/docs/d3_g/btn_Zonal_Application/TOPST_DashBoard/test.obj
 moc_*.cpp
 moc_*.h
 qrc_*.cpp
