@@ -1,15 +1,19 @@
+#
 
-
-
-
-
-## `.bin` file 생성
-
-`tc-nn-toolkit` 디렉터리에서 실행:
+## `onnx` 설치
 
 ```bash
 cd /home/topst/zonal-architecture-kit/tc-nn-toolkit
+source venv/bin/activate
 
+pip install onnx==1.12.0
+```
+
+## `.bin` file 생성
+
+`tc-nn-toolkit` 디렉터리에서 `venv`를 activation하고  실행:
+
+```bash
 python tools/gen_default_box_tools/default_box_generator.py \
     input_networks/rps_yolov8s_extracted.onnx \
     --version v8 \
