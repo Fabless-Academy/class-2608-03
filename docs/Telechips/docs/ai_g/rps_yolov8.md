@@ -31,9 +31,42 @@ python tools/gen_default_box_tools/default_box_generator.py \
 만약 `rps_yolov8s_extracted.onnx`가 원본 ultralytics 익스포트를 그대로 잘라낸 것이 아니라 레이어 이름이 바뀐 커스텀 추출본이라면, 위 conv 레이어 이름이 실제로 존재하는지 `netron`이나 `onnx.load` + `graph.node`로 먼저 확인하는 것이 안전합니다. 확인이 필요하면 도와드리겠습니다.
 
 
+## Enlight JSON 설정 file
+
+명령어 실행시 설정 option을 JSON file로 정의하고 이를 `--model-config``` option으로 참고하여 실행하게 설정할 수 있다.
+
+각 설정에 대한 자세한 설명은 [여기](./rps_yolov8_json.md)를 참고
+
+---
 ## Convert
 ```bash
-python ./EnlightSDK/converter.py \
-    ./input_networks/rps_yolov8s_extracted.onnx \
-    --model-config ./input/rps_yolov8s.json
+python EnlightSDK/converter.py \
+input_networks/rps_yolov8s_extracted.onnx \
+--model-config input/rps_yolov8s.json
+```
+
+## Quantizer
+```bash
+python EnlightSDK/quantizer.py \
+output_networks/rps_yolov8s.enlight \
+--model-config input/rps_yolov8s.json
+```
+
+## Compiler
+```bash
+python EnlightSDK/compiler.py \
+output_networks/rps_yolov8s_quantized.enlight \
+--model-config input/rps_yolov8s.json
+```
+
+## Build
+```bash
+cd build_network
+cp -a ../output_code/rps_yolov8s_quantized/ ./
+rm network.h post_process.c
+ln -s rps_yolov8s_quantized/network.h
+ln -s rps_yolov8s_quantized/post_process.c
+make clean && make
+cp net.so rps_yolov8s_quantized
+scp -r rps_yolov8s_quantized/ root@192.168.0.100:/home/root
 ```
