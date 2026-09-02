@@ -32,12 +32,12 @@ python tools/gen_default_box_tools/default_box_generator.py \
 
 **동작 원리**: 스크립트는 ONNX에 `shape_inference`를 돌려 지정한 conv 레이어들의 출력 텐서 shape(grid H/W)를 추출하고, YOLOv8 방식(`grid_offset=-0.5`, 앵커 없음)으로 각 grid cell의 기준 박스 좌표를 계산해 `ENBIN_V1` 포맷 바이너리로 저장합니다. 이 `.bin`은 이후 컴파일 단계에서 `--add-detection-post-process` 인자로 detection post-process 레이어에 주입됩니다.
 
-만약 `rps_yolov8s_extracted.onnx`가 원본 ultralytics 익스포트를 그대로 잘라낸 것이 아니라 레이어 이름이 바뀐 커스텀 추출본이라면, 위 conv 레이어 이름이 실제로 존재하는지 `netron`이나 `onnx.load` + `graph.node`로 먼저 확인하는 것이 안전합니다. 확인이 필요하면 도와드리겠습니다.
+만약 `rps_yolov8s_extracted.onnx`가 원본 ultralytics 익스포트를 그대로 잘라낸 것이 아니라 레이어 이름이 바뀐 커스텀 추출본이라면, 위 conv 레이어 이름이 실제로 존재하는지 `netron`이나 `onnx.load` + `graph.node`로 먼저 확인하는 것이 안전합니다.
 
-
+---
 ## Enlight JSON 설정 file
 
-명령어 실행시 설정 option을 JSON file로 정의하고 이를 `--model-config``` option으로 참고하여 실행하게 설정할 수 있다.
+명령어 실행시 설정 option을 JSON file로 정의하고 이를 `--model-config` option으로 참고하여 실행하게 설정할 수 있다.
 
 각 설정에 대한 자세한 설명은 [여기](./rps_yolov8_json.md)를 참고
 
