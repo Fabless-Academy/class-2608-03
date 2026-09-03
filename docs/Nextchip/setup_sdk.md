@@ -1,61 +1,6 @@
-# 공유 폴더 & SDK setup
+# Apache6 setup
 
-## 1. Guest 확장 프로그램 설치
-
-## Guest 확장 프로그램?
-
-- Virtual Box의 Guest OS (현재는 Ubuntu)에서 VM을 편하게 사용할 수 있도록 해주는 프로그램
-- **기능 :** 화면 해상도 자동 조정, Host OS - Guest OS 사이 공유 폴더, 클립 보드 공유
-
-## 설치 방법
-
-- 게스트 확장 CD 이미지 삽입
-  - VM화면 메뉴 - 장치 - 게스트 확장 CD 이미지 삽입
-- apt-get repository update & build-essential 패키지 설치
-  
-  ```bash
-  sudo apt-get update
-  sudo apt-get install build-essential
-  ```
-
-- 게스트 확장 프로그램 설치
-  
-  ```bash
-  sudo /media/devuser/VBOX_GAs_7.?.?/VBoxLinuxAdditions.run
-  ```
-
-- 공유 폴더 설정
-  - VM화면 메뉴 - 장치 - 공유 폴더 - 공유 폴더 설정
-  - 빨간 박스 영역 내에서 마우스 오른쪽 버튼 클릭 - 공유 폴더 추가
-    - Folder Path : 윈도우에서 폴더 하나 만들어서 선택
-    - 자동 마운트 / Make Machine-permanent 선택
-    - 확인
-
-- 클립 보드 공유 설정
-  - VM화면 메뉴 - 장치 - 공유 폴더 - 클립 보드 공유 -양방향
-
-- Ubuntu Power Off 후 다시 VM 전원 켜고 적용 내용 동작 확인
-  - 게스트 확장 정상 동작 확인
-    - 화면 크기 조절 확인
-    - 공유 폴더 확인 : ls /media/sf_share 확인
-      - Permission denied
-        - 공유 폴더를 접근 할 권한이 없음
-      - 공유 폴더 접근을 위해 현재 유저에 vboxsf 라는 group 추가
-  
-        ```jsx
-        sudo usermod -aG vboxsf $USER
-        groups $USER 
-        ```
-  
-        - 명령 수행 후 Ubuntu 재부팅
-  
-        ```jsx
-        shutdown -r now
-        ```
-  
-    - 클립 보드 공유 확인 : windows에서 text 복사 - Ubuntu에서 붙여넣기 확인
-
-## 2. SDK 설치
+## SDK 설치
 
 ### Toolchain 설치
 

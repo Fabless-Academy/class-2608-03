@@ -9,19 +9,14 @@
     ```bash
     sudo apt-get install net-tools
     ```
-    
 
 ## 네트워크 설정
 
 ### 임베디드 보드와 연결 된 Ethernet의 IP 설정
 
-- Ubuntu desktop의 우측 상단 네트워크 아이콘 클릭 - enp0s8 - Wired Setting 클릭
+- Ubuntu desktop의 우측 상단 네트워크 아이콘 클릭 -> enp0s8 -> Wired Setting 클릭
     
-    !image.png
-    
-- enp0s8 활성화 (빨간색 클릭) 후 설정 (파란색 클릭)
-    
-    !image.png
+- enp0s8 활성화 
     
 - **IP설정** : IPv4 tap 선택 후 아래 그림과 같이 설정
     - IPv4 Method : Manual
@@ -30,22 +25,15 @@
         - Netmask : 255.255.255.0
         - Gateway : 192.168.13.1
     - Apply 클릭
-    
-    !image.png
-    
 
 ### VM의 NAT 네트워크 포트포워드 설정
 
 - SSH로 Host OS (Windows)에서 VM의 Guest OS(Linux)에 연결하기 위한 설정
 - VM 설정 - 네트워크 - 네트워크1(NAT) - 포트 포워딩
     
-    !image.png
-    
 - + 버튼 클릭 후 다음과 같이 규칙 추가
     - 이름 : SSH접속 / 프로토콜 : TCP / 호스트IP : 127.0.0.1 / 호스트 포트 : 2222 / 게스트 IP : 생략 / 게스트 포트 : 22
-    
-    !image.png
-    
+
 
 # NFS Server 설정
 
