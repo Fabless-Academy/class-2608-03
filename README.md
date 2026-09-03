@@ -47,4 +47,4 @@ Fabless internship 3rd in 2026
 * [편 도훈](https://github.com/Fabless-Academy/pdh_11)
 * [한 규석](https://github.com/Fabless-Academy/hks-12)
 * [홍 현희](https://github.com/Fabless-Academy/hhh-13)
-* [hochae](https://github.com/Fabless-Academy/jhc-000)
+* [hochae](https://github.com/Fabless-Academy/jhc_000)
