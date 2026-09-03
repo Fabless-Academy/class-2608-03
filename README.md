@@ -33,7 +33,7 @@ Fabless internship 3rd in 2026
 
 ## Nextchip
 
-## Git에 publishing 하는 법
+## [Git에 publishing 하는 법](./docs/git_publish.md)
 
 ## Classmates
 
