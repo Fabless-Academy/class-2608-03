@@ -10,6 +10,8 @@ Fabless internship 3rd in 2026
 
 ## [Nextchip](./docs/Nextchip/readme.md)
 
+## [Nextchip_p](https://github.com/Fabless-Academy/Fabless-internship-materials)
+
 ## [Git에 publishing 하는 법](./docs/git_publish.md)
 
 ## Classmates
