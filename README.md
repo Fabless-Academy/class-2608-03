@@ -1,18 +1,12 @@
 # class-2608-03
+
 Fabless internship 3rd in 2026
 <!-- 
 ## 자신의 `github 소개 repo` 만들기
 
 * [Sample](./docs/readme_ex.md) -->
 
-
-## [Telechips](./docs/Telechips/Readme.md)
-
-## [Nextchip](./docs/Nextchip/readme.md)
-
-## [Nextchip_p](https://github.com/Fabless-Academy/Fabless-internship-materials)
-
-## [Git에 publishing 하는 법](./docs/git_publish.md)
+## [수업자료](https://github.com/Fabless-Academy/Fabless-internship-materials)
 
 ## Classmates
 
@@ -26,4 +20,4 @@ Fabless internship 3rd in 2026
 * [편 도훈](https://github.com/Fabless-Academy/pdh_11)
 * [한 규석](https://github.com/Fabless-Academy/hks-12)
 * [홍 현희](https://github.com/Fabless-Academy/hhh-13)
-* [hochae](https://github.com/Fabless-Academy/jhc_000)
+<!-- * [hochae](https://github.com/Fabless-Academy/jhc_000) -->
