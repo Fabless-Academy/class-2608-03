@@ -82,7 +82,7 @@
 - Micro SD카드에 build된 이미지 쓰기
 
     ```bash
-    cd ./apaapache6-sr-linux_som_micro/scripts
+    cd ~/apaapache6-sr-linux_som_micro/scripts
     sudo ./mk-sd-card.sh /dev/sdc     # 참고 : 1.6GB 정도 write해야 함 (시간 오래 걸림)
     ```
 

@@ -9,51 +9,51 @@
 ## 2. VM 생성
 
 - `새로 만들기` 클릭
-    - **VM Name :** VM_NextChip
-    - VM Folder : default로 진행
-    - ISO Image : ubuntu-20.04.6-desktop-amd64.iso 선택
-        - 선택 시 아래 OS/OS Distribution/OS Version 등 자동 선택
-        - 중요!! : **Proceed with Unattended Installation** 체크 해제!
-    - Spectify virtual hardware
-        - Base Memory : `4GB 이상` 여유있게
-        - CPU : `8개 이상` 여유있게
-    - Specify virtual Hard Disk
-        - `64GB` 권장
+  - **VM Name :** VM_NextChip
+  - VM Folder : default로 진행
+  - ISO Image : ubuntu-20.04.6-desktop-amd64.iso 선택
+    - 선택 시 아래 OS/OS Distribution/OS Version 등 자동 선택
+    - 중요!! : **Proceed with Unattended Installation** 체크  해제!
+  - Spectify virtual hardware
+    - Base Memory : `4GB 이상` 여유있게
+    - CPU : `8개 이상` 여유있게
+  - Specify virtual Hard Disk
+    - `64GB` 권장
 - VM_NextChip 설정
-    - 네트워크
-        - `어댑터 2` - 네트워크 어댑터 활성화
-            - Attached to : **어댑터에 브릿지**
-            - Name : **노트북의 유선 adaptor** 선택
+  - 네트워크
+    - `어댑터 2` - 네트워크 어댑터 활성화
+      - Attached to : **어댑터에 브릿지**
+      - Name : **노트북의 유선 adaptor** 선택
 - 설정 완료 후 Summary 확인
-    - 시스템 : 기본 메모리, 프로세서 확인
-    - 저장소 : 하드 디스크 (64GB이상)
-    - 네트워크 : 어댑터2 활성화 여부 확인
+  - 시스템 : 기본 메모리, 프로세서 확인
+  - 저장소 : 하드 디스크 (64GB이상)
+  - 네트워크 : 어댑터2 활성화 여부 확인
 
 ## 3. Ubuntu 20.04 설치
 
 - VM 전원 켜기 : VM_NextChip 더블 클릭
 - Install 화면
-    - Install Ubuntu 선택
+  - Install Ubuntu 선택
 
 - Keyoard Layout Continue
-    - default로 continue 선택
+  - default로 continue 선택
 
 - Update and other software
-    - Normal Installation 선택 후 continue
+  - Normal Installation 선택 후 continue
 
 - Installation type
-    - Erasedisk and install ubuntu 선택 후 ‘Install Now’ 진행
-        - continue 진행
+  - Erasedisk and install ubuntu 선택 후 ‘Install Now’ 진행
+    - continue 진행
 
 - Where are you?
-    - Seoul 선택 : apt-get repository 선택에 영향을 미치므로 꼭 Seoul 선택 후 continue
+  - Seoul 선택 : apt-get repository 선택에 영향을 미치므로 꼭 Seoul 선택 후 continue
 
 - Who are you
-    - Your name : devuser
-    - password : 본인이 선택
+  - Your name : devuser
+  - password : 본인이 선택
 
 - 설치 진행
-    - 진행 완료 popup 뜨면 **Restart Now** 클릭
+  - 진행 완료 popup 뜨면 **Restart Now** 클릭
 
     <!-- - installation medium 제거 안내 나오면 머신 전원 끄고 미디어 꺼내기
         - 전원 끄기 : 파일 - 닫기 / 시스템 전원 끄기 선택 후 확인
@@ -118,13 +118,27 @@
   
     - 클립 보드 공유 확인 : windows에서 text 복사 - Ubuntu에서 붙여넣기 확인
 
-## 5. VS code install
+## 💡 Tip
+
+- `terminal` 기본 color가 어두운 것들이 많아 잘 안보이는 문제 해결
+  
+  아래 내용을 `~/.bashrc`에 추가
+  
+  ```bash
+
+  # 밝은 배경(Light background) 전용 ls 색상 설정 적용
+  eval "$(dircolors -b /etc/DIR_COLORS.light 2>/dev/null || dircolors -b)"
+  ```
+
+---
+## ℹ️ VS code install
 
 ### `sudo dpkg -i ~/res/vscode/code_1.35.1-1560349847_i386.deb`의 문제점
 
 제시해주신 명령어로 설치할 경우 이전 두 방식(APT, Snap)과 몇 가지 치명적인 차이점 및 문제점이 발생합니다.
 
 #### 1. 32비트(i386) 패키지 문제 (실행 불가)
+
 `i386`은 **32비트 아키텍처용 패키지**를 의미합니다.
 
 * Visual Studio Code는 **1.36 버전을 끝으로 32비트 Linux 지원을 중단**했습니다.

@@ -1,5 +1,6 @@
 # Local editor settings
 .vscode/
+.DS_Store
 
 # Python bytecode and caches
 __pycache__/
