@@ -102,6 +102,40 @@ sudo chmod 777 /nfsroot
   mount -t nfs -o nolock 192.168.13.29:/nfsroot  /mnt/nfs
   ```
 
+  - **`mount`**
+  - 리눅스에서 파일 시스템(외부 저장 장치, 네트워크 공유 등)을 특정 디렉터리에 연결하는 기본 명령입니다.
+  - **`-t nfs`**
+  - **`-t` (Type):** 마운트할 파일 시스템의 종류를 지정합니다.
+  - **`nfs`:** 네트워크 공유 방식 중 하나인 **NFS (Network File System)** 기술을 사용한다는   의미입니다.
+  
+  - **`-o nolock`**
+  - **`-o` (Option):** 마운트 시 사용할 세부 옵션을 지정합니다.
+  - **`nolock`:** 파일 잠금(File Locking) 기능을 사용하지 않도록 설정합니다.
+  - 일반적으로 NFS는 파일 동시 수정 방지를 위해 `rpc.statd` 및 `lockd` 데몬을 이용해 파일 잠금을   수행합니다.
+  - 임베디드 시스템이나 단순한 개발 환경 등에서 해당 데몬이 실행 중이지 않을 때 마운트 실패가 발생하는 것을  방지하기 위해 이 옵션을 자주 사용합니다.
+
+  - **`192.168.13.29:/nfsroot`**
+  - **원격 서버의 위치 및 공유 경로**입니다.
+  - `192.168.13.29`: NFS 서버의 IP 주소입니다.
+  - `/nfsroot`: 서버에서 공유 중인 디렉터리 경로입니다.
+  
+  - **`/mnt/nfs`**
+  - 마운트 포인트 (Mount Point)입니다.
+  - 원격 서버의 `/nfsroot` 디렉터리를 연결할 **내 로컬 시스템의 폴더 경로**입니다.
+
+---
+
+### 마운트 성공 여부 확인 방법
+
+명령어를 실행한 후 문제없이 연결되었는지 확인하려면 다음 명령어를 입력하세요.
+
+```bash
+df -h
+
+```
+
+**확인 기준:** 출력 결과 맨 아래쪽에 `192.168.13.29:/nfsroot`가 `/mnt/nfs`에 연결되어 있는 항목이 보이면 마운트에 성공한 것입니다.
+
   <!-- ```bash
   setenv sdc_bootargs "setenv bootargs console=ttyS2,${baudrate}n8 loglevel=8 cma=${CMA_SIZE} rootwait kgdboc=ttyS2,${baudrate} carrier_timeout=0 ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:::off root=/dev/mmcblk0p2"
   saveenv
